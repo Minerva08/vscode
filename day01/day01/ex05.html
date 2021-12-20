@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 연산자는 자바와 거의 비슷하게 사용할 수 있으나
+        // 비교 연산자는 주의하기
+        // == : 값의 형태만 검사한다. 숫자와 문자열이 같다라고 판별될 수 있다
+        // === : 형태와 자료형일치여부를 검사한다. 자료형이 다르면 무조건 다르다
+
+        const a = 0
+        const b = '0'   // 홑따옴표 쌍따옴표 모두 문자열이다
+        const c = []
+
+        console.log(a == b)
+        console.log(a == c)
+        console.log(b == c)
+
+        const d = null
+        const e = undefined
+        console.log(d)
+        console.log(e)
+
+        undefined = 1
+        // null = 2
+        console.log(undefined)
+        console.log(null)
+
+    </script>
+
+</body>
+</html>

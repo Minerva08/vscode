@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 20px;
+        }
+        body > div {
+            display: flex;
+        }
+        input[type="button"],
+        input[type="submit"],
+        button {
+            font-size: 20px;
+        }
+        /* javascript 에서 활용할 클래스를 미리 작성 */
+        .img {
+            position: absolute;
+            top: 40%;
+            left: 45%;
+            transition-duration: 0.5s;
+        }
+        .show {
+            opacity: 1;
+        }
+        .hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트 연습</h1>
+    <hr>
+    <div class="root">
+        <div class="btns">
+            <div class="div1">
+                <div class=""><input type="button" value="버튼1"></div>
+                <div class=""><input type="submit" value="버튼2"></div>
+                <div class=""><button>버튼3</button></div>
+            </div>
+            <div class="div2">
+                <div class=""><input type="button" value="버튼4"></div>
+                <div class=""><input type="submit" value="버튼5"></div>
+                <div class=""><button>버튼6</button></div>
+            </div>
+        </div>
+        <div class="order">
+            <ul>
+                <li>1) 버튼1을 클릭하면 alert으로 Hello, world 를 출력하세요</li>
+                <li>2) 버튼2를 클릭하면 버튼의 배경색과 글자색이 바뀌도록 하세요</li>
+                <li>3) 버튼3을 클릭하면 두가지 상태가 번갈아 바뀌도록 처리하세요</li>
+            </ul>
+        </div>
+    </div>
+
+    <img class="img hidden" 
+        src="http://221.164.9.222/img/calmdownman.jpg" 
+        width="200px">
+
+    <script>
+        // 대상을 참조하기 전에 미리 선언해두기
+        const imgTag = '<img src="http://221.164.9.222/img/dora.png"' +
+                    ' style="position: absolute;' +
+                            'top: 50%; left: 45%; opacity: 0;' + 
+                            'transition-duration: 0.5s">' 
+        document.querySelector('.root').innerHTML += imgTag
+    </script>
+
+    <script>
+        // 1) 버튼1을 클릭하면 alert으로 Hello, world 를 출력하세요
+        // 이벤트 대상 : 버튼1
+        // 이벤트 리스너 : 클릭
+        // 이벤트 핸들러(함수) : alert('Hello, world')
+
+        const btn1 = document.querySelector('input[type="button"]')
+        // console.log({btn1: btn1})
+        btn1.onclick = function() {
+            alert('Hello, world')
+        }
+    </script>
+        
+    <script>
+        // 2) 버튼2를 클릭하면 버튼의 배경색과 글자색이 바뀌도록 하세요
+        const btn2 = document.querySelector('input[type="submit"]')
+        btn2.onclick = function() {
+            btn2.style.color = 'white'
+            btn2.style.backgroundColor = 'black'
+        }
+    </script>
+
+    <script>
+        // 3) 버튼3을 클릭하면 두가지 상태가 번갈아 바뀌도록 처리하세요
+        // 상태1:   보이는 글자 - 정상
+        //          배경색 - 파랑
+        //          글자색 - 흰색
+        // 상태2:   보이는 글자 - 취소
+        //          배경색 - 빨강
+        //          글자색 - 노랑
+        const btn3 = document.querySelector('button')
+        btn3.onclick = function() {
+            const flag = btn3.innerText != '정상'
+            btn3.innerText = flag ? '정상' : '취소'
+            btn3.style.color = flag ? 'white' : 'yellow'
+            btn3.style.backgroundColor = flag ? 'blue' : 'red'
+        }
+    </script>
+
+    <script>
+        // 4) 버튼4에 마우스를 올리면 confirm을 띄우고 (onmouseover)
+        // 확인을 누르면 네이버 페이지로 이동하세요
+        const btn4 = document.querySelector('.div2 input[type="button"]')
+        btn4.onmouseover = function() {
+            if(confirm('네이버로 이동?')) {
+                // location.href = 'https://www.naver.com'
+                location.replace('https://www.naver.com')
+            }
+        }
+    </script>
+
+    <script>
+        // 5) 버튼 5를 오른쪽 클릭하면 아무 그림이나 화면 가운데에 띄우세요
+        // 힌트: 요소를 미리 만들어두고, display: none 설정해두었다가
+        // 우클릭하면 display를 block 혹은 flex 혹은 inline 등으로 바꾸세요
+        // 그림의 위치는 position: absolute; top: left: 등을 활용하세요
+        // oncontextmenu
+
+        const img = document.querySelector('.root img')
+        const btn5 = document.querySelector('.div2 input[type="submit"]')
+
+        btn5.oncontextmenu = function(event) {
+            event.preventDefault()
+            // const flag = img.style.display == 'none'
+            // img.style.display = flag ? 'block' : 'none'
+
+            const flag = img.style.opacity == 0
+            img.style.opacity = flag ? 1 : 0
+        }
+    </script>
+
+    <script>
+        const askman = document.querySelector('img.img')
+        const btn6 = document.querySelector('.div2 button')
+
+        btn6.oncontextmenu = function(event) {
+            event.preventDefault()
+            console.log(askman.className)   // 문자열 띄워쓰기로 구분됨
+            console.log(askman.classList)   // 배열형식, 클래스 하나가 멤버
+            const flag = askman.classList.contains('hidden')
+            if(flag) {
+                askman.classList.remove('hidden')
+                askman.classList.add('show')
+            }
+            else {
+                askman.classList.remove('show')
+                askman.classList.add('hidden')
+            }
+        }
+    </script>
+    
+</body>
+</html>

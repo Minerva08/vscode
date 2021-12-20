@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 변수 선언 키워드 var(X), let(O), const(O)
+        let a = 'test'
+        a = 5
+        const b = 12
+        const c = true
+        const d = {         // 멤버 요소를 중괄호 내에 작성
+            name: '이지은',  // 왼쪽은 속성 이름, 오른쪽은 속성 값, : 으로 구분
+            age: 29,
+            show: function() {  // 속성이름이 show이고, 값은 함수이다
+                console.log(this.name + '님은 ' + this.age + '살입니다')
+            }
+            // 자바스크립트에서는 함수도 객체로 취급하고, 변수에 저장도 가능하다
+            // 객체 자신을 가리키는 키워드 this가 존재한다
+        }
+
+        console.log(typeof a)
+        console.log(typeof b)
+        console.log(typeof c)
+        console.log(typeof d)
+
+        console.log(d.name)
+        console.log(d.age)
+        d.show()
+        
+        console.log(typeof d.show)
+        // 자바에서 함수를 변수에 저장하기 위해서 사용하는 방식 : 람다식
+        const func = () => {
+            alert('함수 실행 !!')
+        }
+        d.show = func
+        d.show()
+        // 아래 코드는 자바의 람다식 객체 생성 코드
+        // Runnable run = () -> { System.out.println("Hello"); };
+
+        const e = ['짱구', '이슬이', '흰둥이', '훈이', '철수']
+        console.log(typeof e)   // 배열, Array
+
+        for(let i = 0; i < e.length; i++) {
+            const kid = e[i]
+            console.log(i + ')' + kid)
+        }
+
+        e.forEach((kid, index) => console.log(index + ')' + kid))
+
+//      array.forEach((element, index) => { 실행 내용 })        
+
+
+    </script>
+</body>
+</html>

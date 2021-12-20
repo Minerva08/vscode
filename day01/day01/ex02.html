@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        a = 1;
+        var b = 2;
+        let c = 3;
+        const d = 4;
+
+        console.log('a : ' + a)
+        console.log('b : ' + b)
+        console.log('c : ' + c)
+        console.log('d : ' + d)
+
+        function test1() {  // 함수 정의
+            console.log(f)  // 선언하기 전에 값을 참조하려 했다
+                            // 값 : undefined
+            e = 5;
+            var f = 6;  // 변수 선언
+            let g = 7;
+            const h = 8;
+            var i;      // 변수를 선언만 하고, 할당하지 않으면 undefined
+            console.log('i : ' + i)
+
+            console.log('e : ' + e)
+            console.log('f : ' + f)
+            console.log('g : ' + g)
+            console.log('h : ' + h)
+
+            var b = 10; 
+            // let, const 가 등장한 이유는 var가 변수선언 블럭을 명확히 하지 않아서
+            b = 5;
+            console.log('test) b : ' + b)
+        }
+        test1()
+
+        console.log('e : ' + e)
+        // console.log('f : ' + f)  // 선언되지 않은 변수를 참조하려해서 에러발생
+        // console.log('g : ' + g)
+        // console.log('h : ' + h)
+
+        console.log('script) b : ' + b)
+
+    </script>
+    
+</body>
+</html>

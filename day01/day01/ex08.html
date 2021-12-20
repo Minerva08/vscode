@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table id="pig" border="1" cellpadding="7" cellspacing="0">
+        <tr>
+            <td rowspan="3">돼지머리</td>
+            <td>목살</td>
+            <td rowspan="2">가브리살</td>
+            <td rowspan="2">등심</td>
+            <td rowspan="4">뒷다리살</td>
+        </tr>
+        <tr>
+            <td>항정살</td>
+        </tr>
+        <tr>
+            <td>갈비</td>
+            <td>갈매기살</td>
+            <td>안심</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>앞다리살</td>
+            <td colspan="2">삼겹살</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>돈족</td>
+            <td></td>
+            <td></td>
+            <td>돈족</td>
+        </tr>
+    </table>
+
+    <script>
+        const pig = document.getElementById('pig')  // id가 일치하는요소 하나를 찾아옴
+        const tdList = document.querySelectorAll('#pig td')
+
+        console.log(pig)
+        console.log(tdList)
+
+        pig.style.border = '0'
+
+        tdList.forEach(td => {
+            if(td.innerText != '') {
+                td.style.border = '1px solid black'
+                td.style.backgroundColor = 'pink'
+                td.style.textAlign = 'center'
+            }
+            else {
+                td.style.border = '0'
+            }
+        })
+
+        // 1) 삼겹살 칸을 찾아서 변수로 불러오세요
+        // 2) 삼겹살 칸의 글자만 굵게 처리하세요 (font-weight: bold;)
+
+        const sam = pig.querySelector('tr:nth-child(4) td:last-child')
+        sam.style.fontWeight = 'bold'
+
+        const sam2 = pig.children[0].children[3].children[2]
+        sam2.style.color = 'red'
+
+        sam.onmouseover = function(event) {
+            alert('맛있다 : ' + event.target.innerText)
+        }
+        // 이벤트 대상      : element, 어떤 요소에 이벤트를 걸 것인가
+        // 이벤트 리스너    : 어떤 조건에 의해 이벤트가 발생할 것인가
+        // 이벤트 핸들러    : 이벤트가 발생하면 어떤 내용을 진행할 것인가
+    </script>
+
+</body>
+</html>

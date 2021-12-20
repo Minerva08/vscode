@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="table" border="1" cellpadding="7" cellspacing="0" width="300px">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const thead = document.querySelector('thead')   // 태그 이름
+        const tbody = document.querySelector('#table > tbody')  // id + 자손 선택자
+
+        thead.innerHTML = '<tr><th>이름</th><th>나이</th>'
+
+        const arr = [   // 자바스크립트가 가지고 있던 데이터를
+            {name: '짱구', age: 12},
+            {name: '철수', age: 12},
+            {name: '이슬이', age: 14},
+            {name: '흰둥이', age: 3},
+            {name: '훈이', age: 12},
+        ]   // HTML 문서에 반영할 수 있다
+
+        arr.forEach(kid => {
+            const tag = '<tr><td>' + kid.name + '</td><td>' + kid.age + '살</td></tr>'
+            tbody.innerHTML += tag
+        })
+
+        // 문서를 객체형태로 취급하여 특정 요소를 불러올 수 있다
+        // 자주 사용되는 함수 3가지
+        // document.getElementById(elementId)       : Node
+        // document.querySelector(cssSelector)      : Node
+        // document.querySelectorAll(cssSelector)   : NodeList
+    </script>
+    
+</body>
+</html>

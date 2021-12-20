@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var name = 'itbank' // name 변수를 선언하고 'itbank'로 초기화 한다
+        console.log(name)   // 출력
+
+        var name = 'test'   // name 변수를 선언하고 'test'로 초기화한다
+        console.log(name)   // 출력, 이게 왜 되지?
+
+        let name2 = 'itbank'
+        console.log(name2)
+
+        // let name2 = 'test'   // name2라는 변수가 이미 선언되어 있으니
+        name2 = 'test'       // 중복 선언은 안되지만, 값 재할당은 가능
+        console.log(name2)   // 같은 이름으로 다시 선언할 수 없다 (재할당 가능)
+
+        const name3 = 'itbank'
+        console.log(name3)
+        
+        // const name3 = 'test'
+        // name3 = 'test'      // 중복 선언 불가, 값 재할당 불가
+        console.log(name3)
+        </script>
+    
+</body>
+</html>
