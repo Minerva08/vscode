@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ex03.js 에 필요한 모든 함수를 정의할 예정 -->
+    <script src="ex03.js"></script> 
+
+    <h1>필터링과 정렬</h1>
+    <hr>
+    <div class="root">
+        <div class="left">
+            <fieldset>
+                <p><label><input type="checkbox" name="ageFilter" value="10">10대</label></p>
+                <p><label><input type="checkbox" name="ageFilter" value="20">20대</label></p>
+                <p><label><input type="checkbox" name="ageFilter" value="30">30대</label></p>
+                <p><label><input type="checkbox" name="ageFilter" value="40">40대</label></p>
+            </fieldset>
+        </div>
+        <div class="right">
+            <table>
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>나이</th>
+                        <th>성별</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // 여기에는 문서에서 요소를 불러오거나
+        // 함수로 객체를 불러와서
+        // 여러 함수를 호출하여 데이터를 처리하고 화면에 반영하는 작업
+        // 이벤트 함수 연결
+
+        const data = getData()      // 데이터를 불러오고
+        const tbody = document.querySelector('.right tbody') // HTML요소 불러오고
+        const dom = getDom(data)    // 데이터를 dom으로 변환하고
+        render(tbody, dom)          // dom을 HTML요소에 그린다
+
+        const boxList = document.querySelectorAll('.left input[type="checkbox"]')
+        boxList.forEach(box => box.onclick = filterHandler) // 이벤트 함수 연결
+    </script> 
+    
+</body>
+</html>
